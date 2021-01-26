@@ -15,8 +15,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 dispatcher = updater.dispatcher
 
 from dictionary import alphabet, morse, keymash, keymashExtra
-import decode from decoder
-import encode from encoder
+from decoder import decode
+from encoder import encode
 
 def start(update, context):
   context.bot.send_message(chat_id=update.effective_chat.id, text="Type to encode")

@@ -2,7 +2,8 @@ from telegram.ext import Updater
 from telegram.ext import CommandHandler
 from telegram.ext import MessageHandler, Filters
 
-import random;
+import random
+import json
 
 import dotenv
 dotenv.load()
@@ -14,9 +15,12 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 dispatcher = updater.dispatcher
 
-from dictionary import alphabet, morse, keymash, keymashExtra
-from decoder import decode
-from encoder import encode
+with open("dictionary.json", "r") as read_file:
+    data = json.load(read_file)
+    alphabet = data.alphabet
+    morse = data.morse
+    keymash = data.keymash
+    keymashExtra = data.keymashExtra
 
 def start(update, context):
   context.bot.send_message(chat_id=update.effective_chat.id, text="Type to encode")

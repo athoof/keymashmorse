@@ -9,5 +9,5 @@ def encode(inputText):
   # Replace whitespaces with a random element from keymashExtra
   # then return as a string
   encodedText = ''.join([x.replace('0', random.choice(keymashExtra)) for x in encodedText])
-  return(encodedText);
+  return encodedText;
 

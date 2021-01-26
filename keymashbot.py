@@ -15,6 +15,9 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 dispatcher = updater.dispatcher
 
+from encoder import encode
+from decoder import decode
+
 with open("dictionary.json", "r") as read_file:
     data = json.load(read_file)
     alphabet = data.alphabet

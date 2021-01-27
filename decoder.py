@@ -1,3 +1,11 @@
+import json
+with open("dictionary.json", "r") as read_file:
+    data = json.load(read_file)
+    alphabet = data['alphabet']
+    morse = data['morse']
+    keymash = data['keymash']
+    keymashExtra = data['keymashExtra']
+    
 def decode(encodedText):
   # Replace every occurrence s with . and k with -
   decodedText = encodedText.replace('s', '.').replace('k', '-');

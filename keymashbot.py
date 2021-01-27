@@ -4,10 +4,12 @@ from telegram.ext import MessageHandler, Filters
 
 import random
 import json
+import os
 
-import dotenv
-dotenv.load()
-updater = Updater(token='{TOKEN}', use_context=True)
+from dotenv import load_dotenv
+load_dotenv()
+TOKEN = os.getenv("TOKEN")
+updater = Updater(token = TOKEN, use_context=True)
 
 import logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',

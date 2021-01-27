@@ -20,10 +20,10 @@ from decoder import decode
 
 with open("dictionary.json", "r") as read_file:
     data = json.load(read_file)
-    alphabet = data.alphabet
-    morse = data.morse
-    keymash = data.keymash
-    keymashExtra = data.keymashExtra
+    alphabet = data['alphabet']
+    morse = data['morse']
+    keymash = data['keymash']
+    keymashExtra = data['keymashExtra']
 
 def start(update, context):
   context.bot.send_message(chat_id=update.effective_chat.id, text="Type to encode")

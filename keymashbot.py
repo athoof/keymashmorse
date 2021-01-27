@@ -15,8 +15,29 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 dispatcher = updater.dispatcher
 
-from encoder import encode
-from decoder import decode
+def encode(inputText):
+  # Convert to keymash list
+  encodedText = [keymash[alphabet.index(x)] for x in inputText];
+
+  # Convert to string delimited by 0s
+  encodedText = '0'.join(encodedText);
+  # Replace whitespaces with a random element from keymashExtra
+  # then return as a string
+  encodedText = ''.join([x.replace('0', random.choice(keymashExtra)) for x in encodedText])
+  return encodedText;
+
+def decode(encodedText):
+  # Replace every occurrence s with . and k with -
+  decodedText = encodedText.replace('s', '.').replace('k', '-');
+
+  # If character is alphanumeric, i.e not a dit or dah, return '0'
+  # .split('0') to delimit the resulting list by 0s, preserving spaces
+  decodedText = "".join(['0' if x.isalnum() else x for x in decodedText]).split('0');
+
+  # using morse[] as reference to find the corresponding index on alphabet[]
+  decodedText = "".join([alphabet[morse.index(x)] for x in decodedText]);
+
+  return decodedText
 
 with open("dictionary.json", "r") as read_file:
     data = json.load(read_file)

@@ -1,4 +1,11 @@
 import random;
+import json
+with open("dictionary.json", "r") as read_file:
+    data = json.load(read_file)
+    alphabet = data['alphabet']
+    morse = data['morse']
+    keymash = data['keymash']
+    keymashExtra = data['keymashExtra']
 
 def encode(inputText):
   # Convert to keymash list
